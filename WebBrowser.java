@@ -2,12 +2,11 @@
 // and delete that history, among other things (explained by the HELP command)
 
 //Christopher Marcano
-//***************************************************************************************************************
 
 import java.util.*;
 import java.util.Queue;
 import java.util.LinkedList;
-//**************************************************************************************************************
+
 public class WebBrowser { public static void main(String args[]){
     // create the strings and arrays that will record the activity related to the URLs visited
     Queue<String> downloads=new LinkedList<>();
@@ -17,13 +16,13 @@ public class WebBrowser { public static void main(String args[]){
     String URL ="",address,command;
     //create the scanner
     Scanner sc=new Scanner(System.in);
-//***************************************************************************************************************
+
     // the initial prompt for input and HELP command explanation
     do{
         System.out.println("Enter a command to execute (type HELP for a list of options)");
         //allows the input (string) to be stored in the command variable and use the correct method
         command=sc.nextLine();
-        //***********************************************************************************************************
+        
         //prints list of commands with explanations
          if (command.equals("HELP")){
             System.out.println("COMMAND LIST: ");
@@ -36,7 +35,7 @@ public class WebBrowser { public static void main(String args[]){
             System.out.println("SHOW_HISTORY: This command shows a list of all previous URL visits,");
             System.out.println("CLEAR_HISTORY: This command deletes the record of URLs visited.");
             System.out.println("END: This command ends the program.");}
-         //***********************************************************************************************************
+         
         //the GOTO command brings up the entered URL
         else if(command.equals("GOTO")){
         //ask for URL
@@ -53,33 +52,31 @@ public class WebBrowser { public static void main(String args[]){
             //ensures the FORWARD list is cleared when using GOTO
             if(!forwards.empty())
                 forwards.clear();}
-        //*******************************************************************************************************
         // adds URL to download list
         else if(command.equals("DOWNLOAD")){
             downloads.add(URL);
         System.out.println(URL + " downloaded.");}
-//******************************************************************************************************************
+
         //prints the download list or lets user know it is empty
         else if(command.equals("SHOW_DOWNLOADS")){
             if(downloads.isEmpty())
                 System.out.println("Download list empty");
                 for (String download : downloads)
                 System.out.println(download);}
-        //*********************************************************************************************************
+        
         //removes all entries in the download list
         else if(command.equals("CLEAR_DOWNLOADS")){
             System.out.println("Downloads cleared.");
             if(!downloads.isEmpty())
             downloads.clear();
         System.out.println("Download list empty.");}
-        //***********************************************************************************************************
+        
         //this command prints the history
         else if(command.equals("SHOW_HISTORY")){
             if(history.isEmpty())
             System.out.println("History is empty.");
             for(int i=0;i<history.size();i++){
                 System.out.println(history.get(i));}}
-       //*********************************************************************************************************
         //Removes all entries in the history list
         else if(command.equals("CLEAR_HISTORY")){
             history.clear();
@@ -87,7 +84,7 @@ public class WebBrowser { public static void main(String args[]){
                 System.out.println("History is empty.");
             for(int i=0;i<history.size();i++){
                 System.out.println(history.get(i));}}
-//***************************************************************************************************************
+
          //this command allows you to access the previous URL
          else if(command.equals("BACK")){
              //adds URL to the FORWARD list so it can be returned to until a new GOTO input
@@ -98,7 +95,7 @@ public class WebBrowser { public static void main(String args[]){
              else
                  URL =backwards.pop();
              System.out.println(URL);}
-        //*********************************************************************************************************
+        
          //reverses the BACK command and returns to initial GOTO address
          else if(command.equals("FORWARD")){
              backwards.push(URL);
@@ -108,14 +105,12 @@ public class WebBrowser { public static void main(String args[]){
              else
                  URL =forwards.pop();
              System.out.println(URL);}
-         //*************************************************************************************************************
+         
          //ends program
         else if (command.equals("END")){
             System.out.println("Program ending...");}
-        //************************************************************************************************************
         // sends error if invalid command entered
         else
             System.out.println("Invalid command\n");}
-    //*********************************************************************************************************************
     //loops program until END command used
     while(!command.equals("END")); }}

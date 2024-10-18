@@ -1,6 +1,6 @@
 //This is a program that allows you to input a URL, record that you accessed that and any other URLs
 // and delete that history, among other things (explained by the HELP command)
-//adv Java
+
 //Christopher Marcano
 //***************************************************************************************************************
 
